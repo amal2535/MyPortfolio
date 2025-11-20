@@ -4,7 +4,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import GridPattern from "@/components/magicui/grid_pattern";
 import { TypeAnimation } from "react-type-animation";
-import { Github, Linkedin, Facebook, Instagram, Sun, Moon } from "lucide-react";
+import { Github, Linkedin, Facebook, Sun, Moon } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import amal from "@/public/images/amal.jpg";
