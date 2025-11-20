@@ -13,10 +13,25 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Amal Maatoug Portfolio",
-  description: "Portfolio de Amal Maatoug, ingénieure en informatique et développeuse Python/Fullstack.",
+export const metadata = {
+  title: "Amal Maatoug – Ingénieure Logiciel | Portfolio",
+  description:
+    "Portfolio d'Amal Maatoug, ingénieure en informatique spécialisée en développement Python, Fullstack et IA.",
+  keywords: [
+    "Amal Maatoug",
+    "Portfolio Amal",
+    "Python developer Tunisia",
+    "Développeuse Fullstack",
+  ],
+  openGraph: {
+    title: "Portfolio – Amal Maatoug",
+    description: "Ingénieure Logiciel • Python • Fullstack • IA",
+    url: "https://amal-maatoug.vercel.app",
+    siteName: "Amal Portfolio",
+    type: "website",
+  }
 };
+
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
