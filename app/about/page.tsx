@@ -1,83 +1,66 @@
 "use client";
 
-import { useState } from "react";
 import { cn } from "@/lib/utils";
 import GridPattern from "@/components/magicui/grid_pattern";
 import { Code, Palette, Rocket, Award, BookOpen, Briefcase, Sun, Moon, Download } from "lucide-react";
 import { motion } from "framer-motion";
-
-const getInitialTheme = () => {
-  if (typeof window === "undefined") return false;
-  const saved = sessionStorage.getItem("theme");
-  if (saved === "dark") return true;
-  if (saved === "light") return false;
-  return document.documentElement.classList.contains("dark");
-};
+import { useTheme } from "../themeProvider";
 
 export default function About() {
-  const [dark, setDark] = useState<boolean>(() => {
-    const isDark = getInitialTheme();
-    if (typeof window !== "undefined") {
-      if (isDark) document.documentElement.classList.add("dark");
-      else document.documentElement.classList.remove("dark");
-    }
-    return isDark;
-  });
-
-  const toggleDark = () => {
-    const next = !dark;
-    setDark(next);
-    if (next) {
-      document.documentElement.classList.add("dark");
-      sessionStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      sessionStorage.setItem("theme", "light");
-    }
-  };
+  const { dark, toggleDark } = useTheme();
 
   const skills = [
-    { category: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vue.js"] },
-    { category: "Backend", items: ["Node.js", "Python", "Django", "PostgreSQL", "MongoDB"] },
-    { category: "DevOps", items: ["Docker", "Kubernetes", "AWS", "CI/CD", "Linux"] },
-    { category: "Tools", items: ["Git", "Figma", "VS Code", "Postman", "Jira"] }
+    { category: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Bootstrap"] },
+    { category: "Backend", items: ["Express", "Flask", "FastAPI", "Django", "NextJS"] },
+    { category: "Database", items: ["MongoDB", "MySQL", "SQLite", "ChromaDB"] },
+    { category: "DevOps", items: ["Docker", "AWS", "CI/CD"] },
+    { category: "AI/ML", items: ["TensorFlow", "Keras", "scikit-learn", "Hugging Face"] },
+    { category: "Tools", items: ["Git/GitHub", "Figma", "VS Code", "Postman"] }
   ];
 
   const experience = [
     {
-      role: "Senior Software Engineer",
-      company: "Tech Innovations Inc.",
-      period: "2022 - Present",
-      description: "Leading development of scalable web applications and mentoring junior developers"
+      role: "NextJS & Python Developer Intern",
+      company: "ONRTECH",
+      period: "January 2025 - September 2025",
+      description: "Designed and developed EchoParrot, an intelligent customer call automation platform integrating real-time voice streaming to automatically interpret and respond to client requests."
     },
     {
-      role: "Full Stack Developer",
-      company: "Digital Solutions Ltd.",
-      period: "2020 - 2022",
-      description: "Built responsive web applications and RESTful APIs for enterprise clients"
+      role: "Python Developer Intern",
+      company: "ONRTECH",
+      period: "Juin 2024 - September 2024",
+      description: "Collected data via web scraping, managed and manipulated NoSQL databases, and collaborated within an Agile workflow."
     },
     {
-      role: "Software Developer",
-      company: "StartUp Hub",
-      period: "2018 - 2020",
-      description: "Developed innovative features for SaaS products and mobile applications"
+      role: "Web Developer",
+      company: "ALVEODATA",
+      period: "August 2023 - September 2023",
+      description: "Designed and developed an online education website, creating and optimizing the user interface (UI)."
     }
   ];
 
+
   const education = [
     {
-      degree: "Master of Computer Science",
-      school: "University of Technology",
-      period: "2016 - 2018",
-      description: "Specialized in Artificial Intelligence and Machine Learning"
+      degree: "Computer Engineering Cycle: Software Engineering",
+      school: "Higher Institute of Computer Science and Mathematics of Monastir (ISIMM)",
+      period: "2022 - 2025",
+      description: ""
     },
     {
-      degree: "Bachelor of Software Engineering",
-      school: "Institute of Engineering",
-      period: "2012 - 2016",
-      description: "Focus on software development and system architecture"
+      degree: "Integrated Preparatory Cycle: Mathematics and Computer Science (MCS)",
+      school: "Higher Institute of Computer Science and Mathematics of Monastir (ISIMM)",
+      period: "2020 - 2022",
+      description: ""
+    },
+    {
+      degree: "Baccalaureate in Experimental Sciences",
+      school: "Taher El Hadded High School, ElHamma, Gabes",
+      period: "2020",
+      description: ""
     }
   ];
+
 
   return (
     <div className="maskGradient">
@@ -100,7 +83,7 @@ export default function About() {
             <nav className="flex w-full flex-row text-xl font-sans font-semibold my-16 justify-between items-center">
              
               <ul className="flex flex-wrap gap-y-2 gap-x-8 text-gray-800 dark:text-gray-400">
-                <li><a href="/home" className="hover:underline underline-offset-8 decoration-teal-500">Home</a></li>
+                <li><a href="/" className="hover:underline underline-offset-8 decoration-teal-500">Home</a></li>
                 <li><a href="/about" className="hover:underline underline-offset-8 decoration-teal-500 text-teal-600 dark:text-teal-400">About</a></li>
                 <li><a href="/projects" className="hover:underline underline-offset-8 decoration-teal-500">Projects</a></li>
                 <li><a href="/contact" className="hover:underline underline-offset-8 decoration-teal-500">Contact</a></li>
@@ -124,18 +107,22 @@ export default function About() {
                 About Me
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl leading-relaxed">
-                I am a passionate software engineer with 6+ years of experience building modern web applications. 
-                I love creating elegant solutions to complex problems and turning ideas into reality through code. 
-                My journey in tech has been driven by curiosity and a constant desire to learn and grow.
+                A software engineer passionate about building robust, scalable, and intelligent applications that solve real-world problems.
+                My experience has allowed me to build expertise in full-stack web development, cloud computing, and artificial intelligence.
+                <p>
+                  I am eager to contribute to projects that combine innovation and creativity.
+                </p>
               </p>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="mt-8 px-8 py-4 bg-teal-600 text-white rounded-full font-semibold flex items-center gap-2 hover:bg-teal-700 transition-colors shadow-lg"
-              >
-                <Download className="w-5 h-5" />
-                Download Resume
-              </motion.button>
+              <a href="/resume.pdf" download>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="mt-8 px-8 py-4 bg-teal-600 text-white rounded-full font-semibold flex items-center gap-2 hover:bg-teal-700 transition-colors shadow-lg"
+                >
+                  <Download className="w-5 h-5" />
+                  Download Resume
+                </motion.button>
+              </a>
             </motion.div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
@@ -195,7 +182,7 @@ export default function About() {
                 <Award className="w-8 h-8 text-teal-600 dark:text-teal-400" />
                 <h2 className="text-4xl font-bold text-gray-800 dark:text-white">Skills & Expertise</h2>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {skills.map((skillGroup, idx) => (
                   <motion.div
                     key={idx}

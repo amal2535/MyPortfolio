@@ -8,38 +8,12 @@ import { Github, Linkedin, Facebook, Instagram, Sun, Moon } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import amal from "@/public/images/amal.jpg";
+import { useTheme } from "./themeProvider";
 
-
-const getInitialTheme = () => {
-  if (typeof window === "undefined") return false; // SSR safe
-  const saved = localStorage.getItem("theme");
-  if (saved === "dark") return true;
-  if (saved === "light") return false;
-  return document.documentElement.classList.contains("dark");
-};
 
 export default function Home() {
-  // Lazy initialization
-  const [dark, setDark] = useState<boolean>(() => {
-    const isDark = getInitialTheme();
-    if (typeof window !== "undefined") {
-      if (isDark) document.documentElement.classList.add("dark");
-      else document.documentElement.classList.remove("dark");
-    }
-    return isDark;
-  });
+  const { dark, toggleDark } = useTheme();
 
-  const toggleDark = () => {
-    const next = !dark;
-    setDark(next);
-    if (next) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  };
 
   const date = new Date();
 
@@ -64,7 +38,7 @@ export default function Home() {
               <nav className="flex w-full flex-row text-xl font-sans font-semibold my-16 justify-between items-center">
                
                 <ul className="flex flex-wrap gap-y-2 gap-x-8 text-gray-800 dark:text-gray-400">
-                  <li><a href="/home" className="hover:underline underline-offset-8 decoration-teal-500 text-teal-600 dark:text-teal-400">Home</a></li>
+                  <li><a href="/" className="hover:underline underline-offset-8 decoration-teal-500 text-teal-600 dark:text-teal-400">Home</a></li>
                   <li><a href="/about" className="hover:underline underline-offset-8 decoration-teal-500 ">About</a></li>
                   <li><a href="/projects" className="hover:underline underline-offset-8 decoration-teal-500">Projects</a></li>
                   <li><a href="/contact" className="hover:underline underline-offset-8 decoration-teal-500">Contact</a></li>
@@ -94,9 +68,9 @@ export default function Home() {
                 />
               </div>
               <p className="dark:text-gray-300 text-black max-w-2xl">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry’s standard dummy
-                text ever since the 1500s.
+                  Passionate about building robust, scalable, and intelligent applications that solve real-world problems. 
+                  I love creating elegant solutions to complex problems and turning ideas into reality through code. 
+                  My journey in tech has been driven by curiosity and a constant desire to learn and grow.
               </p>
 
               <motion.div
@@ -105,17 +79,21 @@ export default function Home() {
               >
                 <ul className="flex flex-wrap items-center gap-y-2 gap-x-8 mt-9">
                   <li>
+                  <a href="https://github.com/amal2535" className="hover:underline underline-offset-8 decoration-teal-500">
                     <Github />
+                  </a>
                   </li>
                   <li>
+                     <a href="https://www.linkedin.com/in/amal-maatoug-660476202" className="hover:underline underline-offset-8 decoration-teal-500">
                     <Linkedin />
+                  </a>
                   </li>
                   <li>
+                    <a href="https://www.facebook.com/amal.maatoug.475819/" className="hover:underline underline-offset-8 decoration-teal-500">
                     <Facebook />
+                    </a>
                   </li>
-                  <li>
-                    <Instagram />
-                  </li>
+                 
                 </ul>
               </motion.div>
 
