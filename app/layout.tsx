@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Amal Maatoug Portfolio",
-  description: "Amal Maatoug Portfolio Website",
+  description: "Portfolio de Amal Maatoug, ingénieure en informatique et développeuse Python/Fullstack.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

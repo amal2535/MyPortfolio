@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { cn } from "@/lib/utils";
 import GridPattern from "@/components/magicui/grid_pattern";
 import { TypeAnimation } from "react-type-animation";
