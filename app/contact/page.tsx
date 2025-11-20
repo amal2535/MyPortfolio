@@ -92,11 +92,11 @@ export default function Contact() {
             [120, 120], [140, 180], [160, 120], [100, 160]
           ]}
           className={cn(
-            "fixed inset-0 h-full w-full -z-10",
-            dark
-              ? "bg-gradient-to-br from-gray-900 via-teal-950 to-black"
-              : "bg-gradient-to-t from-white via-teal-50 to-white"
-          )}
+              "fixed inset-0 h-full w-full -z-10",
+              dark
+                ? "bg-gradient-to-br from-gray-900 via-teal-950 to-black"
+                : "bg-gradient-to-br from-white via-teal-200 to-white/70"
+            )}
         />
 
         <div className="relative flex flex-col w-full">
@@ -124,10 +124,10 @@ export default function Contact() {
               transition={{ duration: 0.6 }}
               className="text-center mb-16"
             >
-              <h1 className="text-6xl font-bold text-teal-700 dark:text-white mb-6">
+              <h1 className={cn("text-6xl font-bold mb-6", dark ? "text-white" : "text-teal-700")}>
                 Get In Touch
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              <p className={cn("text-xl max-w-2xl mx-auto", dark ? "text-gray-300" : "text-gray-600")}>
                 Have a project in mind or just want to chat? I would love to hear from you. 
                 Drop me a message and I will get back to you as soon as possible!
               </p>
@@ -139,8 +139,8 @@ export default function Contact() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
               >
-                <h2 className="text-3xl font-bold mb-8 text-gray-800 dark:text-white">
-                  Let us Connect
+                <h2 className={cn("text-3xl font-bold mb-6", dark ? "text-white" : "text-teal-700")}>
+                  Let&apos;s Connect
                 </h2>
                 
                 <div className="space-y-6 mb-8">
@@ -165,7 +165,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <h3 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white">Follow Me</h3>
+                  <h3 className={cn("text-3xl font-bold mb-6", dark ? "text-white" : "text-teal-700")}>Follow Me</h3>
                   <div className="flex gap-4">
                     {socialLinks.map((social, idx) => (
                       <motion.a

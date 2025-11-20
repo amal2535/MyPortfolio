@@ -71,11 +71,11 @@ export default function About() {
             [120, 120], [140, 180], [160, 120], [100, 160]
           ]}
           className={cn(
-            "fixed inset-0 h-full w-full -z-10",
-            dark
-              ? "bg-gradient-to-br from-gray-900 via-teal-950 to-black"
-              : "bg-gradient-to-t from-white via-teal-50 to-white"
-          )}
+              "fixed inset-0 h-full w-full -z-10",
+              dark
+                ? "bg-gradient-to-br from-gray-900 via-teal-950 to-black"
+                : "bg-gradient-to-br from-white via-teal-200 to-white/70"
+            )}
         />
 
         <div className="relative flex flex-col w-full">
@@ -103,10 +103,10 @@ export default function About() {
               transition={{ duration: 0.6 }}
               className="mb-16"
             >
-              <h1 className="text-6xl font-bold text-teal-700 dark:text-white mb-6">
+              <h1 className={cn("text-6xl font-bold  mb-6",  dark ? "text-white" : "text-teal-600")}>
                 About Me
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl leading-relaxed">
+              <p className={cn("text-xl max-w-3xl leading-relaxed",  dark ? "text-gray-300" : "text-gray-600")}>
                 A software engineer passionate about building robust, scalable, and intelligent applications that solve real-world problems.
                 My experience has allowed me to build expertise in full-stack web development, cloud computing, and artificial intelligence.
                 <p>
@@ -180,7 +180,7 @@ export default function About() {
             >
               <div className="flex items-center gap-3 mb-8">
                 <Award className="w-8 h-8 text-teal-600 dark:text-teal-400" />
-                <h2 className="text-4xl font-bold text-gray-800 dark:text-white">Skills & Expertise</h2>
+                <h2 className={cn("text-4xl font-bold",  dark ? "text-white" : "text-teal-600")}>Skills & Expertise</h2>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {skills.map((skillGroup, idx) => (
@@ -215,7 +215,7 @@ export default function About() {
             >
               <div className="flex items-center gap-3 mb-8">
                 <Briefcase className="w-8 h-8 text-teal-600 dark:text-teal-400" />
-                <h2 className="text-4xl font-bold text-gray-800 dark:text-white">Experience</h2>
+                <h2 className={cn("text-4xl font-bold",  dark ? "text-white" : "text-teal-600")}>Experience</h2>
               </div>
               <div className="space-y-6">
                 {experience.map((exp, idx) => (
@@ -242,7 +242,7 @@ export default function About() {
             >
               <div className="flex items-center gap-3 mb-8">
                 <BookOpen className="w-8 h-8 text-teal-600 dark:text-teal-400" />
-                <h2 className="text-4xl font-bold text-gray-800 dark:text-white">Education</h2>
+                <h2 className={cn("text-4xl font-bold",  dark ? "text-white" : "text-teal-600")}>Education</h2>
               </div>
               <div className="space-y-6">
                 {education.map((edu, idx) => (

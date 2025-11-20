@@ -61,11 +61,11 @@ export default function Projects() {
             [120, 120], [140, 180], [160, 120], [100, 160]
           ]}
           className={cn(
-            "fixed inset-0 h-full w-full -z-10",
-            dark
-              ? "bg-gradient-to-br from-gray-900 via-teal-950 to-black"
-              : "bg-gradient-to-t from-white via-teal-50 to-white"
-          )}
+              "fixed inset-0 h-full w-full -z-10",
+              dark
+                ? "bg-gradient-to-br from-gray-900 via-teal-950 to-black"
+                : "bg-gradient-to-br from-white via-teal-200 to-white/70"
+            )}
         />
 
         <div className="relative flex flex-col w-full">
@@ -96,10 +96,10 @@ export default function Projects() {
                 <Sparkles className="w-4 h-4" />
                 <span className="text-sm font-semibold">My Work</span>
               </div>
-              <h1 className="text-6xl font-bold text-teal-700 dark:text-white mb-6">
+              <h1 className={cn("text-6xl font-bold",  dark ? "text-white" : "text-teal-600 mb-4")}>
                 Featured Projects
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              <p className={cn("text-xl max-w-2xl mx-auto", dark ? "text-gray-300" : "text-gray-600")}>
                 A collection of my recent work spanning web development and innovative tech solutions
               </p>
             </motion.div>
